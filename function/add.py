@@ -3,6 +3,8 @@ Fitur 1: Tambah Tiket Baru (Native Python)
 Deskripsi: Staf / Pengguna dapat mencatat tiket laporan masalah baru ke dalam sistem.
 """
 
+from .riwayat import catat_riwayat
+
 JENIS_MASALAH_VALID = {
     "hardware": "Hardware",
     "software": "Software",
@@ -89,4 +91,5 @@ def tambah_tiket(daftar_tiket, nama_pelapor_default=None):
 
     # Output konfirmasi sukses
     print(f"\nTiket {kode_input} dari {nama_input} berhasil dicatat.")
+    catat_riwayat("TAMBAH", kode_input, nama_input, "-", f"{jenis_masalah}; {prioritas}") 
     return True
