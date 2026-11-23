@@ -10,6 +10,7 @@ from .update import update_status_tiket, jawab_tiket
 from .filter import filter_tiket
 from .delete import hapus_tiket, batalkan_tiket_user
 from .utils import clear_screen, bersihkan_layar, jeda
+from .riwayat import catat_riwayat, tampilkan_riwayat
 
 __all__ = [
     "tambah_tiket",
@@ -26,4 +27,6 @@ __all__ = [
     "clear_screen",
     "bersihkan_layar",
     "jeda",
+    "catat_riwayat",
+    "tampilkan_riwayat",
 ]

@@ -15,7 +15,7 @@ from function.search import menu_cari_tiket, cari_tiket_user
 from function.update import update_status_tiket, jawab_tiket
 from function.filter import filter_tiket
 from function.delete import hapus_tiket, batalkan_tiket_user
-
+from function.riwayat import tampilkan_riwayat
 
 def menu_user_portal(daftar_tiket):
     """Portal khusus pengguna / pelapor."""
@@ -80,6 +80,7 @@ def menu_admin_portal(daftar_tiket):
         print("5. Filter Tiket Berdasarkan Jenis Masalah")
         print("6. Tambah Tiket Baru")
         print("7. Hapus Tiket (Khusus Status Selesai)")
+        print("8. Tampilkan Riwayat Penanganan Tiket")
         print("0. Kembali ke Menu Peran")
         print("=" * 55)
 
@@ -112,6 +113,10 @@ def menu_admin_portal(daftar_tiket):
         elif pilihan == "7":
             clear_screen()
             hapus_tiket(daftar_tiket)
+            jeda()
+        elif pilihan == "8":  
+            clear_screen()
+            tampilkan_riwayat()
             jeda()
         elif pilihan == "0":
             break
