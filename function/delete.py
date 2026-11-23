@@ -3,6 +3,8 @@ Fitur 6: Hapus & Batalkan Tiket (Native Python)
 Deskripsi: Menghapus tiket dari sistem sesuai hak akses Admin atau Pengguna (User).
 """
 
+from .riwayat import catat_riwayat
+
 def hapus_tiket(daftar_tiket):
     """
     Fungsi untuk menghapus tiket dari sistem oleh Admin.
@@ -44,6 +46,7 @@ def hapus_tiket(daftar_tiket):
     if konfirmasi == "y":
         daftar_tiket.remove(tiket_target)
         print(f"Tiket {tiket_target['kode_tiket']} dari {tiket_target['nama_pelapor']} berhasil dihapus dari sistem.")
+        catat_riwayat("HAPUS", tiket_target["kode_tiket"], tiket_target["nama_pelapor"], f"{tiket_target['jenis_masalah']}; {tiket_target['prioritas']}", "-")
     else:
         print("Penghapusan dibatalkan.")
 
@@ -89,5 +92,6 @@ def batalkan_tiket_user(daftar_tiket, nama_user):
     if konfirmasi == "y":
         daftar_tiket.remove(tiket_target)
         print(f"Tiket {tiket_target['kode_tiket']} berhasil dibatalkan dan dihapus.")
+        catat_riwayat("HAPUS", tiket_target["kode_tiket"], tiket_target["nama_pelapor"], f"{tiket_target['jenis_masalah']}; {tiket_target['prioritas']}", "-")
     else:
         print("Pembatalan tiket dibatalkan.")
