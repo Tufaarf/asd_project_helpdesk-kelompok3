@@ -2,6 +2,7 @@
 Fitur 4: Update Status & Menjawab Tiket (Native Python)
 Deskripsi: Staf Admin dapat memajukan status penanganan tiket dan memberikan tanggapan/solusi.
 """
+from .riwayat import catat_riwayat  
 
 def update_status_tiket(daftar_tiket):
     """
@@ -51,6 +52,7 @@ def update_status_tiket(daftar_tiket):
     if konfirmasi == "y":
         tiket_target["status"] = status_berikutnya
         print(f"Status tiket {tiket_target['kode_tiket']} berhasil diperbarui: {status_sekarang} menjadi {status_berikutnya}.")
+        catat_riwayat("UBAH_STATUS", tiket_target["kode_tiket"], tiket_target["nama_pelapor"], status_sekarang, status_berikutnya) 
     else:
         print("Pembaruan status dibatalkan.")
 
@@ -100,8 +102,10 @@ def jawab_tiket(daftar_tiket):
         if tanya == "y":
             tiket_target["status"] = "Diproses"
             print(f"Status tiket {tiket_target['kode_tiket']} diperbarui menjadi Diproses.")
+            catat_riwayat("UBAH_STATUS", tiket_target["kode_tiket"], tiket_target["nama_pelapor"], status_sekarang, "Diproses")
     elif status_sekarang == "Diproses":
         tanya = input("Status tiket sedang 'Diproses'. Masalah sudah tuntas dan ubah ke 'Selesai'? (y/n): ").strip().lower()
         if tanya == "y":
             tiket_target["status"] = "Selesai"
             print(f"Status tiket {tiket_target['kode_tiket']} diperbarui menjadi Selesai.")
+            catat_riwayat("UBAH_STATUS", tiket_target["kode_tiket"], tiket_target["nama_pelapor"], status_sekarang, "Selesai")
